@@ -120,10 +120,10 @@ Section "DisplayXR Unity Test (HDRP)" SecApp
     ; to the exe) — single source of truth, no duplication in the repo.
     ; Rename on install so this variant's art doesn't collide with the cube
     ; or transparent installers in %ProgramData%\DisplayXR\apps\.
-    File /oname=icon_unity_test_2d_ui.png "${BIN_DIR}\icon.png"
-    File /oname=icon_sbs_unity_test_2d_ui.png "${BIN_DIR}\icon_sbs.png"
+    File /oname=icon_unity_test_hdrp.png "${BIN_DIR}\icon.png"
+    File /oname=icon_sbs_unity_test_hdrp.png "${BIN_DIR}\icon_sbs.png"
 
-    FileOpen $0 "$APPDATA\DisplayXR\apps\unity_test_2d_ui.displayxr.json" w
+    FileOpen $0 "$APPDATA\DisplayXR\apps\unity_test_hdrp.displayxr.json" w
     FileWrite $0 '{$\r$\n'
     FileWrite $0 '  "schema_version": 1,$\r$\n'
     FileWrite $0 '  "name": "DisplayXR-test (HDRP)",$\r$\n'
@@ -131,8 +131,8 @@ Section "DisplayXR Unity Test (HDRP)" SecApp
     FileWrite $0 '  "category": "test",$\r$\n'
     FileWrite $0 '  "display_mode": "auto",$\r$\n'
     FileWrite $0 '  "description": "HDRP off-axis stereo rendering test — textured cube rendered through the DisplayXR provider under the High Definition Render Pipeline.",$\r$\n'
-    FileWrite $0 '  "icon": "icon_unity_test_2d_ui.png",$\r$\n'
-    FileWrite $0 '  "icon_3d": "icon_sbs_unity_test_2d_ui.png",$\r$\n'
+    FileWrite $0 '  "icon": "icon_unity_test_hdrp.png",$\r$\n'
+    FileWrite $0 '  "icon_3d": "icon_sbs_unity_test_hdrp.png",$\r$\n'
     FileWrite $0 '  "icon_3d_layout": "sbs-lr",$\r$\n'
     ${WordReplace} "$INSTDIR" "\" "/" "+" $1
     FileWrite $0 '  "exe_path": "$1/DisplayXR-test-hdrp.exe"$\r$\n'
@@ -190,9 +190,9 @@ Section "Uninstall"
     nsExec::ExecToLog 'taskkill /f /im DisplayXR-test-hdrp.exe'
     Pop $0
 
-    Delete "$APPDATA\DisplayXR\apps\unity_test_2d_ui.displayxr.json"
-    Delete "$APPDATA\DisplayXR\apps\icon_unity_test_2d_ui.png"
-    Delete "$APPDATA\DisplayXR\apps\icon_sbs_unity_test_2d_ui.png"
+    Delete "$APPDATA\DisplayXR\apps\unity_test_hdrp.displayxr.json"
+    Delete "$APPDATA\DisplayXR\apps\icon_unity_test_hdrp.png"
+    Delete "$APPDATA\DisplayXR\apps\icon_sbs_unity_test_hdrp.png"
     RMDir "$APPDATA\DisplayXR\apps"
 
     Delete "$INSTDIR\Uninstall.exe"
